@@ -5,14 +5,33 @@ import { Link } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
 import { COLORS } from '@/constants'
 
-export default function ProductCard({product} :ProductCardProps) {
+// Minimal wishlist hook inline
+const useWishlist = () => {
+  const [wishlist, setWishlist] = React.useState<any[]>([])
 
-    const [isLikes, setIsLikes] = useState(false)
+  const toggleWishlist = (product: any) => {
+    setWishlist(prev =>
+      prev.some(p => p._id === product._id)
+        ? prev.filter(p => p._id !== product._id)
+        : [...prev, product]
+    )
+  }
 
-    const handleLikePress = (e: any) => {
-      e.stopPropagation()
-      setIsLikes(!isLikes)
-    }
+  const isInWishlist = (id: string) => wishlist.some(p => p._id === id)
+
+  return { toggleWishlist, isInWishlist }
+}
+
+export default function ProductCard({product}: ProductCardProps) {
+
+  const {toggleWishlist, isInWishlist} = useWishlist()
+  const [isLikes, setIsLikes] = useState(isInWishlist(product._id))
+
+  const handleLikePress = (e: any) => {
+    e.stopPropagation()
+    setIsLikes(!isLikes)
+    toggleWishlist(product)
+  }
 
   return (
     <Link href={`/product/${product._id}`} asChild>
