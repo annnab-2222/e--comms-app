@@ -16,22 +16,22 @@ export default function TabLayout() {
         backgroundColor: '#fff',
         borderTopWidth: 1,
         borderTopColor: '#F0F0F0',
-        height: 56,
+        height: 40,
         paddingBottom: 8,
     },
   }}
   >
     <Tabs.Screen name='index' options={{ 
-        tabBarIcon: ({ color, focused }: { color: string; focused: boolean })=> <Ionicons name={focused ? 'home' : 'home-outline'} size={26} color={color}/>
+        tabBarIcon: ({ color, focused }: { color: string; focused: boolean })=> <Ionicons name={focused ? 'home' : 'home-outline'} size={21} color={color}/>
     }} />
      <Tabs.Screen name='cart' options={{ 
-        tabBarIcon: ({ color, focused }: { color: string; focused: boolean })=> <Feather name={focused ? 'shopping-cart' : 'shopping-cart'} size={26} color={color}/>
+        tabBarIcon: ({ color, focused }: { color: string; focused: boolean })=> <Feather name={focused ? 'shopping-cart' : 'shopping-cart'} size={21} color={color}/>
     }} />
      <Tabs.Screen name='favorites' options={{ 
-        tabBarIcon: ({ color, focused }: { color: string; focused: boolean })=> <Feather name={focused ? 'heart' : 'heart'} size={26} color={color}/>
+        tabBarIcon: ({ color, focused }: { color: string; focused: boolean })=> <Feather name={focused ? 'heart' : 'heart'} size={21} color={color}/>
     }} />
      <Tabs.Screen name='profile' options={{ 
-        tabBarIcon: ({ color, focused }: { color: string; focused: boolean })=> <Ionicons name={focused ? 'person' : 'person-outline'} size={26} color={color}/>
+        tabBarIcon: ({ color, focused }: { color: string; focused: boolean })=> <Ionicons name={focused ? 'person' : 'person-outline'} size={21} color={color}/>
     }} />
   </Tabs>
   )
